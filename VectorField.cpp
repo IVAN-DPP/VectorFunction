@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <vector>
 #include <iomanip>
 #include "GL/gl.h"
 #include "GL/glu.h"
@@ -12,6 +13,12 @@ using namespace std;
 
 const double PI = 3.1416;
 double GradToRad(double Grad){ return Grad*PI/180; }
+// These variables must be in the public class
+vector<string> X;
+vector<char> Opx;
+vector<string> Y;
+vector<char> Opy;
+
 
 void CartesianCoordinate(int Dx, int Dy){
   glBegin(GL_LINES);
@@ -74,39 +81,94 @@ void CartesianCoordinate(int Dx, int Dy){
 
 }
 
-double Function(double pos, int pol){
-  switch (pol) {
-  case 1 : { return pow(pos,pol); break; }
-  case 2 : { return pow(pos,2);   break; }
-  case 3 : { return pow(pos,3);   break; }
-  default: { return 0;            break; }
+void FunctionName(string x, string y){
+
+  string Variable;
+
+  for (unsigned int i = 0; i <= x.size(); i++) {
+
+    // By the moment, is important put + or - in the begining of the equation
+    if(i == 0 && (x[0] == '+' || x[0] == '-')){
+      Opx.push_back(x[0]);
+      continue;
+    }
+    if(x[i] == '+' || x[i] == '-' || i == x.size()) {
+      X.push_back(Variable);
+      Opx.push_back(x[i]);
+      Variable.clear();
+      continue;
+    }
+    Variable.push_back(x[i]);    
   }
+
+  Opx.pop_back();
+  Variable.clear();
+
+  for (unsigned int i = 0; i <= y.size(); i++) {
+
+    // By the moment, is important put + or - in the begining of the equation
+    
+    if(i == 0 && (y[0] == '+' || y[0] == '-')){
+      Opy.push_back(y[0]);
+      continue;
+    }
+    if(y[i] == '+' || y[i] == '-' || i == y.size()) {
+      Y.push_back(Variable);
+      Opy.push_back(y[i]);
+      Variable.clear();
+      continue;
+    }
+    Variable.push_back(y[i]);    
+  }
+
+  Opy.pop_back();
+    
 }
 
-void FieldAngle(int Dx, int Dy, double Angle = 0){
 
-  float Size = 0.05f;
-  float TSize = 0.01f;
-  for (int i = 0; i < Dy; i++) {
-    float posy = (2.0*i+1)/Dy - 1.0;
-    for (int j = 0; j < Dx; j++) {
+double Function(float posx, float posy, vector<string> Vxy, vector<char> OPxy){
 
-      glBegin(GL_LINES);
-      float posx = (2.0*j+1)/Dx - 1.0;
-      float AngleX = posx+Size*cos(Angle);
-      float AngleY = posy+Size*sin(Angle);
-      glVertex2f(posx, posy);
-      glVertex2f(AngleX , AngleY);
-      glEnd();
-      glBegin(GL_TRIANGLES);
-      glVertex2f(AngleX+TSize*cos(Angle), AngleY+TSize*sin(Angle));
-      glVertex2f(AngleX-TSize*sin(Angle), AngleY+TSize*cos(Angle));
-      glVertex2f(AngleX+TSize*sin(Angle), AngleY-TSize*cos(Angle));
-      glEnd();
+  double Final = 0;
+  
+  for (unsigned int i = 0; i < Vxy.size(); i++) {
 
-    }  
+    if(Vxy[i] == "x" || Vxy[i] == "X") {
+      if (OPxy[i] == '+') 	Final+=posx;
+      else if(OPxy[i] == '-') 	Final-=posx; 
+    }
+    else if(Vxy[i] == "y" || Vxy[i] == "Y") {
+      if (OPxy[i] == '+') 	Final+=posy;
+      else if(OPxy[i] == '-') 	Final-=posy; 
+    }
+    else if(Vxy[i] == "x*x" || Vxy[i] == "X*X" || Vxy[i] == "x^2" || Vxy[i] == "X^2") {
+      if (OPxy[i] == '+') 	Final+=pow(posx,2);
+      else if(OPxy[i] == '-') 	Final-=pow(posx,2);
+    }
+    else if(Vxy[i] == "y*y" || Vxy[i] == "Y*Y" || Vxy[i] == "y^2" || Vxy[i] == "Y^2") {
+      if (OPxy[i] == '+') 	Final+=pow(posy,2);
+      else if(OPxy[i] == '-') 	Final-=pow(posy,2);
+    }
+    else if(Vxy[i] == "x*x*x" || Vxy[i] == "X*X*X" || Vxy[i] == "x^3" || Vxy[i] == "X^3") {
+      if (OPxy[i] == '+') 	Final+=pow(posx,2);
+      else if(OPxy[i] == '-') 	Final-=pow(posx,2);
+    }
+    else if(Vxy[i] == "y*y*y" || Vxy[i] == "Y*Y*Y" || Vxy[i] == "y^3" || Vxy[i] == "Y^3") {
+      if (OPxy[i] == '+') 	Final+=pow(posy,3);
+      else if(OPxy[i] == '-') 	Final-=pow(posy,3);
+    }
+    else if(Vxy[i] == "x*x*x*x" || Vxy[i] == "X*X*X*X" || Vxy[i] == "x^4" || Vxy[i] == "X^4") {
+      if (OPxy[i] == '+') 	Final+=pow(posx,4);
+      else if(OPxy[i] == '-') 	Final-=pow(posx,4);
+    }
+    else if(Vxy[i] == "y*y*y*y" || Vxy[i] == "Y*Y*Y*Y" || Vxy[i] == "y^4" || Vxy[i] == "Y^4") {
+      if (OPxy[i] == '+') 	Final+=pow(posy,4);
+      else if(OPxy[i] == '-') 	Final-=pow(posy,4);
+    }
   }
+   
+  return Final;
 }
+
 
 void Field(int Dx, int Dy, double Resize = 1.0){
 
@@ -118,8 +180,8 @@ void Field(int Dx, int Dy, double Resize = 1.0){
       
       glBegin(GL_LINES);
       float posx = (2.0*j+1)/Dx - 1.0;
-      float posxf = posx+Resize*(-posy);
-      float posyf = posy+Resize*(posx);
+      float posxf = posx+Resize*(Function(posx,posy,X,Opx));
+      float posyf = posy+Resize*(Function(posx,posy,Y,Opy));
       glVertex2f(posx, posy);
       glVertex2f(posxf , posyf);
       glEnd();
@@ -196,7 +258,8 @@ void setup(){ glClearColor(1.0f, 1.0f, 1.0f, 1.0f); }
 void display(){
   glClear(GL_COLOR_BUFFER_BIT);
   glColor3f(0.0f, 0.0f, 0.0f);
-  Field(10,10,0.1f);
+  FunctionName("+y", "-x");			//Call the functions
+  Field(10,10,0.1f);				//Call the field
   glutSwapBuffers();
 }
 
