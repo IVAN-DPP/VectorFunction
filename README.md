@@ -6,4 +6,22 @@ This project can be use as C++ library or as graphic interface, in this moment, 
 
 ![Vortex](./Examples/Vortex.png)
 
+# List of posible equations
+- f(x,y) = (x,y)     write "x" or "y"
+- f(x,y) = (x²,y²)   write "x^2", "x\*x" or "y^2", "y\*y"
+- f(x,y) = (x³,y³)   write "x^3", "x\*x\*x" or "y^3", "y\*y\*y"
+- f(x,y) = (x⁴,y⁴)   write "x^4", "x\*x\*x\*x" or "y^4", "y\*y\*y\*y"
+
+# Call in C++
+
+```C++
+void display(){
+  glClear(GL_COLOR_BUFFER_BIT);
+  glColor3f(0.0f, 0.0f, 0.0f);
+  FunctionName("+y", "-x");                     //Call the functions
+  Field(10,10,0.1f);                            //Call the field
+  glutSwapBuffers();
+}
+
+
 
