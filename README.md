@@ -2,8 +2,8 @@
 
 This project can be use as C++ library or as graphic interface, in this moment, we just use as **library**.
 
-# Example F(x,y)=(y,-x)
+# Example F(x,y)=(-y,x)
 
-![Vortex][Examples/Vortex.png]
+![Vortex](./Examples/Vortex.png)
 
 
