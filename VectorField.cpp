@@ -15,7 +15,8 @@ void display(){
   glClear(GL_COLOR_BUFFER_BIT);
   glColor3f(0.0f, 0.0f, 0.0f);
   Field Func("+y^2","-x");
-  Func.SetXYVectorsQuanty(10, 10, 0.1f);
+  Func.SetXYMaxMin(10, 10, 0.05f);
+  Func.SetXYVectorsQuanty(0.5, 0.2);
   Func.GetField();  
   glutSwapBuffers();
 }

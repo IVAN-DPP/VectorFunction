@@ -1,6 +1,7 @@
 
 #include "libraries.h"
 #include "Functions.h"
+#include "Cartplane.h"
 
 #ifndef FIELD_H
 #define FIELD_H
@@ -10,13 +11,16 @@ private:
 
   int Dx;
   int Dy;
+  float NX = 1.0;			// Number of vectors in x and y
+  float NY = 1.0;
   double Resize;
   Function Func;
 
 public:
   Field(){}
   Field(string, string);
-  void SetXYVectorsQuanty(int = 5, int = 5, double = 1.0);
+  void SetXYVectorsQuanty(float, float);
+  void SetXYMaxMin(int = 5, int = 5, double = 1.0);
   void GetField();
 };
 
@@ -24,18 +28,23 @@ Field::Field(string x, string y){
   Func.SetFunctionName(x,y);
 }
 
-void Field::SetXYVectorsQuanty(int DX, int DY, double RESIZE){
-  Dx=DX;
-  Dy=DY;
-  Resize=RESIZE;
+void Field::SetXYVectorsQuanty(float nx, float ny){
+  NX = nx;
+  NY = ny;
 }
 
+void Field::SetXYMaxMin(int DX, int DY, double RESIZE){
+  Dx=DX;
+  Dy=DY;
+  Resize=RESIZE;    
+}
 void Field::GetField(){
 
+  CartesianPlane Plane(Dx,Dy);
   float TSize = 30*Resize/100;
-  for (int i = 0; i < Dy; i++) {
+  for (float i = 0; i < Dy; i+=NY) {
     float posy = (2.0*i+1)/Dy - 1.0;
-    for (int j = 0; j < Dx; j++) {
+    for (float j = 0; j < Dx; j+=NX) {
       
       glBegin(GL_LINES);
       float posx = (2.0*j+1)/Dx - 1.0;
