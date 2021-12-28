@@ -18,8 +18,10 @@ This project can be use as C++ library or as graphic interface, in this moment, 
 void display(){
   glClear(GL_COLOR_BUFFER_BIT);
   glColor3f(0.0f, 0.0f, 0.0f);
-  FunctionName("+y", "-x");                     //Call the functions
-  Field(10,10,0.1f);                            //Call the field
+  Field Func("+y^2","-x");            //Call the function
+  Func.SetXYMaxMin(10, 10, 0.05f);    //Range of x and y, and vector size
+  Func.SetXYVectorsQuanty(0.5, 0.2);  //Number of vector into the x and y range
+
   glutSwapBuffers();
 }
 
