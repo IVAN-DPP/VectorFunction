@@ -4,7 +4,7 @@ This project can be use as C++ library or as graphic interface, in this moment, 
 
 # Example F(x,y)=(-y,x)
 
-![Vortex](./Examples/Vortex.png)
+![Vortex](./Pictures/Vortex.png)
 
 # List of posible equations
 - f(x,y) = (x,y)     write "x" or "y"
