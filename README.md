@@ -6,11 +6,20 @@ This project can be use as C++ library or as graphic interface, in this moment, 
 
 ![Vortex](./Pictures/Vortex.png)
 
-# List of posible equations
-- f(x,y) = (x,y)     write "x" or "y"
-- f(x,y) = (x²,y²)   write "x^2", "x\*x" or "y^2", "y\*y"
-- f(x,y) = (x³,y³)   write "x^3", "x\*x\*x" or "y^3", "y\*y\*y"
-- f(x,y) = (x⁴,y⁴)   write "x^4", "x\*x\*x\*x" or "y^4", "y\*y\*y\*y"
+# Compile
+
+## OpenGL and Glut
+You must have OpenGL and Freeglut in your pc
+
+## Make
+
+Follow the next instructions
+
+```bash
+make build
+make
+```
+the executable file is in build/Examples.
 
 # Call in C++
 
@@ -25,5 +34,11 @@ void display(){
   glutSwapBuffers();
 }
 
+```
 
+# List of posible equations
+- f(x,y) = (x,y)     write "x" or "y"
+- f(x,y) = (x²,y²)   write "x^2", "x\*x" or "y^2", "y\*y"
+- f(x,y) = (x³,y³)   write "x^3", "x\*x\*x" or "y^3", "y\*y\*y"
+- f(x,y) = (x⁴,y⁴)   write "x^4", "x\*x\*x\*x" or "y^4", "y\*y\*y\*y"
 
