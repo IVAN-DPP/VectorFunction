@@ -8,9 +8,10 @@ class Function{
 private:
 
   vector<string> X;
-  vector<char> Opx;
+  vector<char> Opx, OpxF;
   vector<string> Y;
-  vector<char> Opy;
+  vector<char> Opy, OpyF;
+  vector<string> XF, YF;
   
 public:
   Function();
