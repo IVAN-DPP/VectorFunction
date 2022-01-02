@@ -18,18 +18,26 @@ void Field::SetXYMaxMin(int DX, int DY, double RESIZE){
 void Field::GetField(){
 
   CartesianPlane Plane(Dx,Dy);
-  float TSize = 30*Resize/100;
-  for (float i = 0; i < Dy; i+=NY) {
-    float posy = (2.0*i+1)/Dy - 1.0;
-    for (float j = 0; j < Dx; j+=NX) {
-      
+
+  for (float i = 0; i <= Dy; i+=NY) {
+
+    for (float j = 0; j <= Dx; j+=NX) {
+
+      float posy = i-Dy/2;
+
       glBegin(GL_LINES);
-      float posx = (2.0*j+1)/Dx - 1.0;
+      float posx = j-Dx/2;
       float posxf = posx+Resize*(Func.GetXFunction(posx,posy));
       float posyf = posy+Resize*(Func.GetYFunction(posx,posy));
+      float TSize = 10*sqrt(pow(posxf-posx,2)+pow(posyf-posy,2))/100;
+      
+      posx = 2*posx/Dx;			posy = 2*posy/Dy;
+      posxf = 2*posxf/Dx;	      	posyf = 2*posyf/Dy;
+      
       glVertex2f(posx, posy);
       glVertex2f(posxf , posyf);
       glEnd();
+
 
       float VectAng = abs(atan((posyf-posy)/(posxf-posx)));
       float proySin = TSize*sin(VectAng);
