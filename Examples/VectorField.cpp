@@ -14,10 +14,11 @@ void setup(){ glClearColor(1.0f, 1.0f, 1.0f, 1.0f); }
 void display(){
   glClear(GL_COLOR_BUFFER_BIT);
   glColor3f(0.0f, 0.0f, 0.0f);
-  Field Func("+y^2","-x");
-  Func.SetXYMaxMin(10, 10, 0.05f);
-  Func.SetXYVectorsQuanty(0.5, 0.2);
-  Func.GetField();  
+  Field Func("+cos(-y)","+sin(+x)");
+  Func.SetXYMaxMin(15,15,0.2f);
+  Func.SetXYVectorsQuanty(1,1);
+  Func.GetField();
+
   glutSwapBuffers();
 }
 
@@ -37,3 +38,7 @@ int main(int argc, char *argv[]){
 
 // How plot a vector field
 // https://www.youtube.com/watch?v=mTSchmlxtQQ
+
+
+
+
