@@ -42,3 +42,21 @@ void display(){
 - f(x,y) = (x³,y³)   write "x^3", "x\*x\*x" or "y^3", "y\*y\*y"
 - f(x,y) = (x⁴,y⁴)   write "x^4", "x\*x\*x\*x" or "y^4", "y\*y\*y\*y"
 
+## Trigonometric equations
+- write sin(...)    Sine 
+- write cos(...)    Cosine
+- write tan(...)    Tangent
+- write csc(...)    Cosecant
+- write sec(...)    Secant
+- write ctg(...)    Cotangent
+- write asi(...)    ArcSine
+- write aco(...)    ArcCosine
+- write ata(...)    ArcTangent
+- write sih(...)    Hyperbolic Sine
+- write coh(...)    Hyperbolic Cosine
+- write tah(...)    Hyperbolic Tangent
+
+## Other functions
+- write exp(...)    Exponential base e
+- write log(...)    Logarithm base e
+- write abs(...)    Absolute value
