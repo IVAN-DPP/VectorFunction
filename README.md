@@ -2,9 +2,21 @@
 
 This project can be use as C++ library or as graphic interface, in this moment, we just use as **library**.
 
-# Example F(x,y)=(-y,x)
+# Examples
+## <p align="center"> F(x,y)=(-y,x) </p>
+<p align="center">
+  <img src="./Pictures/Vortex.png" width="50%">
+</p>
 
-![Vortex](./Pictures/Vortex.png)
+## <p align="center"> F(x,y)=(cos[-y],sin[x]) </p>
+<p align="center">
+  <img src="./Pictures/VortexSinCos.png" width="50%">
+</p>
+
+## <p align="center"> F(x,y)=(-x,cos[y]) </p>
+<p align="center">
+  <img src="./Pictures/-xcos(y).png" width="50%">
+</p>
 
 # Compile
 
