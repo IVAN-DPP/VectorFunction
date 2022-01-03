@@ -19,20 +19,20 @@ void Field::GetField(){
 
   CartesianPlane Plane(Dx,Dy);
 
-  for (float i = 0; i <= Dy; i+=NY) {
+  for (float i = 0; i <= 2*Dy; i+=NY) {
 
-    for (float j = 0; j <= Dx; j+=NX) {
+    for (float j = 0; j <= 2*Dx; j+=NX) {
 
-      float posy = i-Dy/2;
+      float posy = i-Dy;
 
       glBegin(GL_LINES);
-      float posx = j-Dx/2;
+      float posx = j-Dx;
       float posxf = posx+Resize*(Func.GetXFunction(posx,posy));
       float posyf = posy+Resize*(Func.GetYFunction(posx,posy));
       float TSize = 10*sqrt(pow(posxf-posx,2)+pow(posyf-posy,2))/100;
       
-      posx = 2*posx/Dx;			posy = 2*posy/Dy;
-      posxf = 2*posxf/Dx;	      	posyf = 2*posyf/Dy;
+      posx = 0.75f*posx/Dx;			posy = 0.75f*posy/Dy;
+      posxf = 0.75f*posxf/Dx;	      		posyf = 0.75f*posyf/Dy;
       
       glVertex2f(posx, posy);
       glVertex2f(posxf , posyf);
