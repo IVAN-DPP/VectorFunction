@@ -14,9 +14,9 @@ void setup(){ glClearColor(1.0f, 1.0f, 1.0f, 1.0f); }
 void display(){
   glClear(GL_COLOR_BUFFER_BIT);
   glColor3f(0.0f, 0.0f, 0.0f);
-  Field Func("+cos(-y)","+sin(+x)");
-  Func.SetXYMaxMin(15,15,0.2f);
-  Func.SetXYVectorsQuanty(1,1);
+  Field Func("+sin(-y)","+cos(+x)");
+  Func.SetXYMaxMin(6,6,0.1f);
+  Func.SetXYVectorsQuanty(0.5,0.5);
   Func.GetField();
 
   glutSwapBuffers();
